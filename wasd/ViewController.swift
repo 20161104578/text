@@ -9,16 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var text: UITextField!
     
     @IBOutlet weak var text1: UITextField!
     
     @IBOutlet weak var text2: UITextField!
     
-    @IBAction func butten(_ sender: Any) {
+    @IBAction func add(_ sender: Any) {
         text2.text = "\(Int(text.text!)! + Int(text1.text!)!)"
-    
+   
+    }
+    @IBAction func down(_ sender: Any) {
+   
+        
+    }
+    @IBAction func multiply(_ sender: Any) {
+        
+        
+    }
+    @IBAction func divide(_ sender: Any) {
+        
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
