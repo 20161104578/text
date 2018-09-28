@@ -7,19 +7,65 @@
 //
 
 import UIKit
-
-class ViewController: UIViewController {
-    
+class ViewController: UIViewController
+{
+  
     @IBOutlet weak var text: UITextField!
     
-    @IBOutlet weak var text1: UITextField!
+    @IBAction func one(_ sender: Any)
+    {
+        let temp:String = text.text!
+        text.text = temp + "1";
     
-    @IBOutlet weak var text2: UITextField!
-    
-    @IBAction func add(_ sender: Any) {
-        text2.text = "\(Int(text.text!)! + Int(text1.text!)!)"
-   
     }
+    
+    @IBAction func two(_ sender: Any)
+    {
+        let temp:String = text.text!
+        text.text = temp + "2";
+    }
+    
+    @IBAction func three(_ sender: Any)
+    {
+        let temp:String = text.text!
+        text.text = temp + "3";
+    }
+    @IBAction func four(_ sender: Any)
+    {
+        let temp:String = text.text!
+        text.text = temp + "4";
+    }
+    @IBAction func five(_ sender: Any)
+    {
+        let temp:String = text.text!
+        text.text = temp + "5";
+    }
+    @IBAction func six(_ sender: Any)
+    {
+        let temp:String = text.text!
+        text.text = temp + "6";
+    }
+    @IBAction func seven(_ sender: Any)
+    {
+        let temp:String = text.text!
+        text.text = temp + "7";
+    }
+    @IBAction func eight(_ sender: Any)
+    {
+        let temp:String = text.text!
+        text.text = temp + "8";
+    }
+    @IBAction func nine(_ sender: Any)
+    {
+        let temp:String = text.text!
+        text.text = temp + "9";
+    }
+    @IBAction func zero(_ sender: Any)
+    {
+        let temp:String = text.text!
+        text.text = temp + "0";
+    }
+    
     @IBAction func down(_ sender: Any) {
    
         
@@ -31,6 +77,30 @@ class ViewController: UIViewController {
     @IBAction func divide(_ sender: Any) {
         
         
+    }
+    
+   @IBAction func add(_ sender: Any)
+    {
+        text.text = "+"
+        text.text = "\(Int(text.text!)! + Int(text.text!)!)"
+        
+    }
+    @IBAction func equal(_ sender: Any) {
+        
+        
+    }
+   
+    @IBAction func clear(_ sender: Any) {
+        
+        if text.text != "" || !(text.text?.isEmpty)!{
+            //删除前一个字符串
+            text.text?.remove(at: (text.text?.index(before: (text.text?.endIndex)!))!)
+        }else{
+            text.text = ""
+        }
+    }
+    @IBAction func c(_ sender: Any) {
+         text.text = ""
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,4 +114,3 @@ class ViewController: UIViewController {
 
 
 }
-
