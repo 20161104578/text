@@ -11,6 +11,12 @@ class ViewController: UIViewController
 {
   
     @IBOutlet weak var text: UITextField!
+    var num:Double = 0;
+    var num1:Double = 0;
+    var num2:Double = 0;
+    var count:Int = 0
+    var itt:Bool = false
+    var operation:String = ""
     
     @IBAction func one(_ sender: Any)
     {
@@ -81,15 +87,91 @@ class ViewController: UIViewController
     
    @IBAction func add(_ sender: Any)
     {
+        
         text.text = "+"
         text.text = "\(Int(text.text!)! + Int(text.text!)!)"
         
     }
     @IBAction func equal(_ sender: Any) {
         
-        
+     
+        text.text = "\(Int(text.text!)! + Int(text.text!)!)"
     }
-   
+    func operators(op:String){
+        switch op {
+        case "+":
+            operation = "+"
+            if text.text != "" || !(text.text?.isEmpty)!{
+                if ((text.text?.range(of: "=")) != nil){
+                    num1 = num
+                    text.text = "\(num)" + operation
+                }else{
+                    let temp:String = text.text!
+                    num1 = Double.init(text.text!)!
+                    text.text = temp + operation
+                }
+            }else{
+                let temp:String = "0"
+                num1 = num
+                text.text = temp + operation
+            }
+            count = (text.text?.characters.count)!
+        case "-":
+            operation = "-"
+            if text.text != "" || !(text.text?.isEmpty)!{
+                if ((text.text?.range(of: "=")) != nil){
+                    num1 = num
+                    text.text = "\(num)" + operation
+                }else{
+                    let temp:String = text.text!
+                    num1 = Double.init(text.text!)!
+                    text.text = temp + operation
+                }
+            }else{
+                let temp:String = "0"
+                num1 = num
+                text.text = temp + operation
+            }
+            count = (text.text?.characters.count)!
+        case "*":
+            operation = "*"
+            if text.text != "" || !(text.text?.isEmpty)!{
+                if ((text.text?.range(of: "=")) != nil){
+                    num1 = num
+                    text.text = "\(num)" + operation
+                }else{
+                    let temp:String = text.text!
+                    num1 = Double.init(text.text!)!
+                    text.text = temp + operation
+                }
+            }else{
+                let temp:String = "0"
+                num1 = num
+               text.text = temp + operation
+            }
+            count = (text.text?.characters.count)!
+        case "/":
+            operation = "/"
+            if text.text != "" || !(text.text?.isEmpty)!{
+                if ((text.text?.range(of: "=")) != nil){
+                    num1 = num
+                    text.text = "\(num)" + operation
+                }else{
+                    let temp:String = text.text!
+                    num1 = Double.init(text.text!)!
+                    text.text = temp + operation
+                }
+            }else{
+                let temp:String = "0"
+                num1 = num
+                text.text = temp + operation
+            }
+            count = (text.text?.characters.count)!
+        default:
+            break
+        }
+    }
+    
     @IBAction func clear(_ sender: Any) {
         
         if text.text != "" || !(text.text?.isEmpty)!{
@@ -103,6 +185,7 @@ class ViewController: UIViewController
          text.text = ""
     }
     override func viewDidLoad() {
+        text.text = ""//初始化
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
