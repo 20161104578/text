@@ -10,7 +10,10 @@ import UIKit
 class ViewController: UIViewController
 {
   
-    @IBOutlet weak var text: UITextField!
+   
+           
+           
+   @IBOutlet weak var text: UITextField!
     var num:Double = 0;
     var num1:Double = 0;
     var num2:Double = 0;
@@ -18,6 +21,12 @@ class ViewController: UIViewController
     var itt:Bool = false
     var operation:String = ""
     
+  
+    @IBAction func point(_ sender: Any)
+    {
+        let temp:String = text.text!
+        text.text = temp + ".";
+    }
     @IBAction func one(_ sender: Any)
     {
         let temp:String = text.text!
@@ -85,11 +94,11 @@ class ViewController: UIViewController
         
     }
     
-   @IBAction func add(_ sender: Any)
+   @IBAction func add(_ sender: AnyObject)
     {
         
         text.text = "+"
-        text.text = "\(Int(text.text!)! + Int(text.text!)!)"
+        /*text.text = "\(Int(text.text!)! + Int(text.text!)!)"*/
         
     }
     @IBAction func equal(_ sender: Any) {
@@ -97,7 +106,7 @@ class ViewController: UIViewController
      
         text.text = "\(Int(text.text!)! + Int(text.text!)!)"
     }
-    func operators(op:String){
+    /*func operators(op:String){
         switch op {
         case "+":
             operation = "+"
@@ -115,7 +124,7 @@ class ViewController: UIViewController
                 num1 = num
                 text.text = temp + operation
             }
-            count = (text.text?.characters.count)!
+         /*   count = (text.text?.characters.count)!*/
         case "-":
             operation = "-"
             if text.text != "" || !(text.text?.isEmpty)!{
@@ -132,7 +141,7 @@ class ViewController: UIViewController
                 num1 = num
                 text.text = temp + operation
             }
-            count = (text.text?.characters.count)!
+          /* count = (text.text?.characters.count)!*/
         case "*":
             operation = "*"
             if text.text != "" || !(text.text?.isEmpty)!{
@@ -149,7 +158,7 @@ class ViewController: UIViewController
                 num1 = num
                text.text = temp + operation
             }
-            count = (text.text?.characters.count)!
+           /* count = (text.text?.characters.count)!*/
         case "/":
             operation = "/"
             if text.text != "" || !(text.text?.isEmpty)!{
@@ -166,12 +175,12 @@ class ViewController: UIViewController
                 num1 = num
                 text.text = temp + operation
             }
-            count = (text.text?.characters.count)!
+           /* count = (text.text?.characters.count)!*/
         default:
             break
         }
     }
-    
+    */
     @IBAction func clear(_ sender: Any) {
         
         if text.text != "" || !(text.text?.isEmpty)!{
