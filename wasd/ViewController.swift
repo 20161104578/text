@@ -9,17 +9,12 @@
 import UIKit
 class ViewController: UIViewController
 {
-  
-   
-           
-           
+ 
    @IBOutlet weak var text: UITextField!
-    var num:Double = 0;
-    var num1:Double = 0;
-    var num2:Double = 0;
-    var count:Int = 0
-    var itt:Bool = false
-    var operation:String = ""
+    var control:Int = 0
+    var control_minus:Int = 0
+    var number_one:String = ""
+    var NumberOfCalculate:Int = 0
     
   
     @IBAction func point(_ sender: Any)
@@ -82,105 +77,81 @@ class ViewController: UIViewController
     }
     
     @IBAction func down(_ sender: Any) {
-   
+        if control != 0 {
+            equal(control)
+        }
+        control = 1
+        number_one = text.text!
+        text.text = ""
+        NumberOfCalculate = 0
         
+    }
+    @IBAction func add(_ sender: AnyObject)
+    {
+        
+        if control != 0 {
+            equal(control)
+            
+        }
+        control = 2
+        number_one = text.text!
+        text.text = ""
+        NumberOfCalculate = 0
+        /*  text.text = "+"
+         text.text = "\(Int(text.text!)! + Int(text.text!)!)"*/
+        
+    }
+    @IBAction func divide(_ sender: Any)
+    {
+        if control != 0 {
+            equal(control)
+        }
+        control = 3
+        number_one = text.text!
+        text.text = ""
+        NumberOfCalculate = 0
     }
     @IBAction func multiply(_ sender: Any) {
         
-        
+        if control != 0 {
+            equal(control)
+        }
+        control = 4
+        number_one = text.text!
+        text.text = ""
+        NumberOfCalculate = 0
     }
-    @IBAction func divide(_ sender: Any) {
-        
-        
-    }
+  
     
-   @IBAction func add(_ sender: AnyObject)
-    {
-        
-        text.text = "+"
-        /*text.text = "\(Int(text.text!)! + Int(text.text!)!)"*/
-        
-    }
     @IBAction func equal(_ sender: Any) {
         
-     
-        text.text = "\(Int(text.text!)! + Int(text.text!)!)"
-    }
-    /*func operators(op:String){
-        switch op {
-        case "+":
-            operation = "+"
-            if text.text != "" || !(text.text?.isEmpty)!{
-                if ((text.text?.range(of: "=")) != nil){
-                    num1 = num
-                    text.text = "\(num)" + operation
-                }else{
-                    let temp:String = text.text!
-                    num1 = Double.init(text.text!)!
-                    text.text = temp + operation
-                }
-            }else{
-                let temp:String = "0"
-                num1 = num
-                text.text = temp + operation
+            var strtemp:String = ""
+            switch control {
+            case 1 :
+                strtemp = "\(Double(number_one)! - Double(text.text!)!)"
+            case 2 :
+                strtemp = "\(Double(number_one)! + Double(text.text!)!)"
+            case 3:
+                strtemp = "\(Double(number_one)! / Double(text.text!)!)"
+            case 4:
+                strtemp = "\(Double(number_one)! * Double(text.text!)!)"
+            default:
+                strtemp = "0"
             }
-         /*   count = (text.text?.characters.count)!*/
-        case "-":
-            operation = "-"
-            if text.text != "" || !(text.text?.isEmpty)!{
-                if ((text.text?.range(of: "=")) != nil){
-                    num1 = num
-                    text.text = "\(num)" + operation
-                }else{
-                    let temp:String = text.text!
-                    num1 = Double.init(text.text!)!
-                    text.text = temp + operation
-                }
-            }else{
-                let temp:String = "0"
-                num1 = num
-                text.text = temp + operation
+            
+            while (strtemp.last == "0"){
+                strtemp.removeLast()
             }
-          /* count = (text.text?.characters.count)!*/
-        case "*":
-            operation = "*"
-            if text.text != "" || !(text.text?.isEmpty)!{
-                if ((text.text?.range(of: "=")) != nil){
-                    num1 = num
-                    text.text = "\(num)" + operation
-                }else{
-                    let temp:String = text.text!
-                    num1 = Double.init(text.text!)!
-                    text.text = temp + operation
-                }
-            }else{
-                let temp:String = "0"
-                num1 = num
-               text.text = temp + operation
+            if (strtemp.last == "."){
+                strtemp.removeLast()
             }
-           /* count = (text.text?.characters.count)!*/
-        case "/":
-            operation = "/"
-            if text.text != "" || !(text.text?.isEmpty)!{
-                if ((text.text?.range(of: "=")) != nil){
-                    num1 = num
-                    text.text = "\(num)" + operation
-                }else{
-                    let temp:String = text.text!
-                    num1 = Double.init(text.text!)!
-                    text.text = temp + operation
-                }
-            }else{
-                let temp:String = "0"
-                num1 = num
-                text.text = temp + operation
-            }
-           /* count = (text.text?.characters.count)!*/
-        default:
-            break
+            text.text = strtemp
+            control = 0
+            number_one = text.text!
+            NumberOfCalculate = NumberOfCalculate + 1
         }
-    }
-    */
+    
+
     @IBAction func clear(_ sender: Any) {
         
         if text.text != "" || !(text.text?.isEmpty)!{
@@ -204,5 +175,5 @@ class ViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
 
-
 }
+
