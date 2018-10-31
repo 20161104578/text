@@ -10,6 +10,8 @@ import UIKit
 class ViewController: UIViewController
 {
  
+    
+   
    @IBOutlet weak var text: UITextField!
     var control:Int = 0
     var control_minus:Int = 0
@@ -74,6 +76,7 @@ class ViewController: UIViewController
     {
         let temp:String = text.text!
         text.text = temp + "0";
+   
     }
     
     @IBAction func down(_ sender: Any) {
@@ -95,7 +98,8 @@ class ViewController: UIViewController
         }
         control = 2
         number_one = text.text!
-        text.text = ""
+       // let temp:String = text.text!
+        text.text = "+"
         NumberOfCalculate = 0
         /*  text.text = "+"
          text.text = "\(Int(text.text!)! + Int(text.text!)!)"*/
@@ -146,6 +150,7 @@ class ViewController: UIViewController
                 strtemp.removeLast()
             }
             text.text = strtemp
+        
             control = 0
             number_one = text.text!
             NumberOfCalculate = NumberOfCalculate + 1
@@ -177,3 +182,4 @@ class ViewController: UIViewController
 
 }
 
+//对于？和！号的理解，简单理解声明变量时如果不初始化系统是不会给变量赋nil的，会报错，？的作用就是告诉系统这里如果没有初始化就是nil。同理，在用这类变量的时候，也需要加上？解包，如果加！就是强制解包，可以理解为让系统认为这个变量一定不是nil。
