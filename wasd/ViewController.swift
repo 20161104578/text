@@ -14,18 +14,29 @@ class ViewController: UIViewController
    
    @IBOutlet weak var text: UITextField!
     var control:Int = 0
-    var control_minus:Int = 0
-    var number_one:String = ""
+    //var control_minus:Int = 0
+    var number_one:String = ""//第一个数
+    var number_two:String = ""//第二个数
+    var decimal = 0 //小数
     var NumberOfCalculate:Int = 0
-    
-  
+    var Symbol =
     @IBAction func point(_ sender: Any)
     {
-        let temp:String = text.text!
-        text.text = temp + ".";
+    
+        if decimal == 0
+        {
+            text.text = number_one + ".";
+            decimal = 1
+        }
+        if decimal == 1
+        {
+            text.text = number_one + "." + Symbol + number_two + "."
+        }
+        
     }
     @IBAction func one(_ sender: Any)
     {
+        number_two = "1"
         let temp:String = text.text!
         text.text = temp + "1";
     
@@ -33,49 +44,66 @@ class ViewController: UIViewController
     
     @IBAction func two(_ sender: Any)
     {
+        number_two = "2"
         let temp:String = text.text!
         text.text = temp + "2";
     }
     
     @IBAction func three(_ sender: Any)
     {
+        number_two = "3"
         let temp:String = text.text!
         text.text = temp + "3";
     }
     @IBAction func four(_ sender: Any)
     {
+        number_two = "4"
         let temp:String = text.text!
         text.text = temp + "4";
     }
     @IBAction func five(_ sender: Any)
     {
+        number_two = "5"
         let temp:String = text.text!
         text.text = temp + "5";
     }
     @IBAction func six(_ sender: Any)
     {
+        number_two = "6"
         let temp:String = text.text!
         text.text = temp + "6";
     }
     @IBAction func seven(_ sender: Any)
     {
+        number_two = "7"
         let temp:String = text.text!
         text.text = temp + "7";
     }
     @IBAction func eight(_ sender: Any)
     {
+        number_two = "8"
         let temp:String = text.text!
         text.text = temp + "8";
     }
     @IBAction func nine(_ sender: Any)
     {
+        number_two = "9"
         let temp:String = text.text!
         text.text = temp + "9";
     }
     @IBAction func zero(_ sender: Any)
     {
-        let temp:String = text.text!
-        text.text = temp + "0";
+        number_two = "0"
+        if control == 3 {
+            text.text = "不能除以0"
+        }
+        else
+        {
+            let temp:String = text.text!
+            text.text = temp + "0";
+        }
+      
+        
    
     }
     
@@ -85,7 +113,8 @@ class ViewController: UIViewController
         }
         control = 1
         number_one = text.text!
-        text.text = ""
+        let Symbol = "➖"
+        text.text = number_one + Symbol
         NumberOfCalculate = 0
         
     }
@@ -98,8 +127,9 @@ class ViewController: UIViewController
         }
         control = 2
         number_one = text.text!
-       // let temp:String = text.text!
-        text.text = "+"
+        let Symbol = "➕"
+        text.text = number_one + Symbol
+       
         NumberOfCalculate = 0
         /*  text.text = "+"
          text.text = "\(Int(text.text!)! + Int(text.text!)!)"*/
@@ -112,7 +142,8 @@ class ViewController: UIViewController
         }
         control = 3
         number_one = text.text!
-        text.text = ""
+        let Symbol = "➗"
+        text.text = number_one + Symbol
         NumberOfCalculate = 0
     }
     @IBAction func multiply(_ sender: Any) {
@@ -122,7 +153,8 @@ class ViewController: UIViewController
         }
         control = 4
         number_one = text.text!
-        text.text = ""
+        let Symbol = "✖️"
+        text.text = number_one + Symbol
         NumberOfCalculate = 0
     }
   
@@ -132,13 +164,13 @@ class ViewController: UIViewController
             var strtemp:String = ""
             switch control {
             case 1 :
-                strtemp = "\(Double(number_one)! - Double(text.text!)!)"
+                strtemp = "\(Double(number_one)! - Double(number_two)!)"
             case 2 :
-                strtemp = "\(Double(number_one)! + Double(text.text!)!)"
+                strtemp = "\(Double(number_one)! + Double(number_two)!)"
             case 3:
-                strtemp = "\(Double(number_one)! / Double(text.text!)!)"
+                strtemp = "\(Double(number_one)! / Double(number_two)!)"
             case 4:
-                strtemp = "\(Double(number_one)! * Double(text.text!)!)"
+                strtemp = "\(Double(number_one)! * Double(number_two)!)"
             default:
                 strtemp = "0"
             }
@@ -168,7 +200,9 @@ class ViewController: UIViewController
     }
     @IBAction func c(_ sender: Any) {
          text.text = ""
+         decimal == 0
     }
+    
     override func viewDidLoad() {
         text.text = ""//初始化
         super.viewDidLoad()
